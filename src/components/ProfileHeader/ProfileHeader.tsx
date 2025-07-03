@@ -20,7 +20,8 @@ export default function ProfileHeader() {
             <Badge variant="secondary">Software Engineer</Badge>
           </div>
           <div className="text-sm text-muted-foreground mt-1">
-            Over 2 years of experience
+            I build full-stack, intelligent systems that automate workflows and
+            boost efficiency.
           </div>
           <div className="flex flex-wrap gap-2 text-xs mt-2">
             {/* <span className="text-xs mt-1 flex items-center gap-1">
