@@ -1,14 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
-import {
-  ExternalLink,
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  MoreVertical,
-  PhoneCallIcon,
-} from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
 import { ModeToggle } from "../ThemeProvider";
 
 export default function ProfileHeader() {
@@ -40,10 +32,10 @@ export default function ProfileHeader() {
             <span className="text-xs mt-1 flex items-center gap-1">
               <Mail className="h-4 w-4 text-black-600 dark:text-gray-400" />
               <a
-                href="mailto:ndiemasam@gmail.com"
+                href="mailto:samkip@gmail.com"
                 className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
-                ndiemasam@gmail.com <ExternalLink className="h-3 w-3" />
+                samkip@gmail.com <ExternalLink className="h-3 w-3" />
               </a>
             </span>
           </div>
@@ -52,10 +44,10 @@ export default function ProfileHeader() {
             <span className="text-xs mt-1 flex items-center gap-1">
               <Linkedin className="h-4 w-4 text-black-600 dark:text-gray-400" />
               <a
-                href="https://www.linkedin.com/in/samuel-ndiema-b70000180/"
+                href="https://www.linkedin.com/in/samuel-ndiema-84b298228/"
                 className="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
               >
-                Samkipz
+                Samuel Ndiema
               </a>
             </span>
             &nbsp;

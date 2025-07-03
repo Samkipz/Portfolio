@@ -15,11 +15,10 @@ interface NavigationTabsProps {
 const TABS = [
   { value: "profile", label: "Profile" },
   { value: "projects", label: "Projects" },
-  { value: "timeoff", label: "Time Off" },
-  { value: "payroll", label: "Payroll" },
-  { value: "compensation", label: "Compensation" },
-  { value: "benefits", label: "Benefits" },
-  { value: "banking", label: "Banking Information" },
+  { value: "skills", label: "Skills" },
+  { value: "experience", label: "Experience" },
+  { value: "education", label: "Education" },
+  { value: "contact", label: "Contact" },
 ];
 
 export default function NavigationTabs({

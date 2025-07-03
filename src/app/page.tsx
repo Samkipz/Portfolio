@@ -1,18 +1,16 @@
 "use client";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 import NavigationTabs from "../components/NavigationTabs/NavigationTabs";
-import BankingSection from "../components/BankingSection/BankingSection";
+
 import { useState } from "react";
 import NavigationSection from "../components/NavigationPage/NavigationSection";
 const TABS = [
   "profile",
   "projects",
-  "general",
-  "timeoff",
-  "payroll",
-  "compensation",
-  "benefits",
-  "banking",
+  "skills",
+  "experience",
+  "education",
+  "contact",
 ];
 
 export default function Home() {
