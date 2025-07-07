@@ -4,14 +4,6 @@ import NavigationTabs from "../components/NavigationTabs/NavigationTabs";
 
 import { useState } from "react";
 import NavigationSection from "../components/NavigationPage/NavigationSection";
-const TABS = [
-  "profile",
-  "projects",
-  "skills",
-  "experience",
-  "education",
-  "contact",
-];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("profile");

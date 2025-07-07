@@ -28,7 +28,7 @@ export default function ContactSection() {
       <Card className="rounded-md border bg-muted/40 p-0">
         <CardContent className="py-3 px-4">
           <div className="mb-4 text-lg font-medium">
-            Let's build something amazing.
+            Let&#39;s build something amazing.
           </div>
           <div className="grid gap-3">
             {contactInfo.map((info, index) => (
