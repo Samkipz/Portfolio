@@ -18,12 +18,14 @@ export default function EducationSection() {
     <div className="flex flex-col gap-3">
       {education.map((edu, index) => (
         <Card key={index} className="rounded-md border bg-muted/40 p-0">
-          <CardContent className="py-3 px-4">
-            <div className="font-semibold">
-              {edu.degree}{" "}
-              <span className="text-sm font-normal">
-                | {edu.school} ({edu.period})
-              </span>
+          <CardContent>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <div className="font-semibold">
+                {edu.degree}{" "}
+                <span className="text-sm font-normal">
+                  | {edu.school} ({edu.period})
+                </span>
+              </div>
             </div>
           </CardContent>
         </Card>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -45,9 +46,9 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: rgba(255,255,255,0.7);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -76,12 +77,15 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --accent-gradient: linear-gradient(90deg, #3b82f6 0%, #a21caf 100%);
+  --glass: rgba(255,255,255,0.6);
+  --glass-dark: rgba(30,41,59,0.6);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: rgba(30,41,59,0.7);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
@@ -110,6 +114,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --glass: rgba(30,41,59,0.6);
+  --glass-dark: rgba(255,255,255,0.1);
 }
 
 @layer base {
@@ -117,9 +123,36 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--foreground);
   }
   code {
     @apply font-mono;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 1rem;
+  border: 1px solid rgba(30,41,59,0.18);
+}
+
+.accent-gradient {
+  background: var(--accent-gradient);
+  color: white;
 }

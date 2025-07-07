@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from "react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import {
   DropdownMenu,
@@ -5,7 +6,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "../ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  User,
+  Folder,
+  Sparkles,
+  Briefcase,
+  GraduationCap,
+  Mail,
+} from "lucide-react";
 
 interface NavigationTabsProps {
   activeTab: string;
@@ -13,34 +22,128 @@ interface NavigationTabsProps {
 }
 
 const TABS = [
-  { value: "profile", label: "Profile" },
-  { value: "projects", label: "Projects" },
-  { value: "skills", label: "Skills" },
-  { value: "experience", label: "Experience" },
-  { value: "education", label: "Education" },
-  { value: "contact", label: "Contact" },
+  {
+    value: "profile",
+    label: "Profile",
+    icon: <User className="w-4 h-4 mr-1" />,
+  },
+  {
+    value: "projects",
+    label: "Projects",
+    icon: <Folder className="w-4 h-4 mr-1" />,
+  },
+  {
+    value: "skills",
+    label: "Skills",
+    icon: <Sparkles className="w-4 h-4 mr-1" />,
+  },
+  {
+    value: "experience",
+    label: "Experience",
+    icon: <Briefcase className="w-4 h-4 mr-1" />,
+  },
+  {
+    value: "education",
+    label: "Education",
+    icon: <GraduationCap className="w-4 h-4 mr-1" />,
+  },
+  {
+    value: "contact",
+    label: "Contact",
+    icon: <Mail className="w-4 h-4 mr-1" />,
+  },
 ];
 
 export default function NavigationTabs({
   activeTab,
   onTabChange,
 }: NavigationTabsProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(
+    TABS.findIndex((tab) => tab.value === activeTab)
+  );
+  const [hoverStyle, setHoverStyle] = useState({});
+  const [activeStyle, setActiveStyle] = useState({ left: "0px", width: "0px" });
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    setActiveIndex(TABS.findIndex((tab) => tab.value === activeTab));
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      const hoveredElement = tabRefs.current[hoveredIndex];
+      if (hoveredElement) {
+        const { offsetLeft, offsetWidth } = hoveredElement;
+        setHoverStyle({
+          left: `${offsetLeft}px`,
+          width: `${offsetWidth}px`,
+        });
+      }
+    }
+  }, [hoveredIndex]);
+
+  useEffect(() => {
+    const activeElement = tabRefs.current[activeIndex];
+    if (activeElement) {
+      const { offsetLeft, offsetWidth } = activeElement;
+      setActiveStyle({
+        left: `${offsetLeft}px`,
+        width: `${offsetWidth}px`,
+      });
+    }
+  }, [activeIndex, tabRefs, activeTab]);
+
+  useEffect(() => {
+    // On mount, set the underline to the active tab
+    requestAnimationFrame(() => {
+      const activeElement = tabRefs.current[activeIndex];
+      if (activeElement) {
+        const { offsetLeft, offsetWidth } = activeElement;
+        setActiveStyle({
+          left: `${offsetLeft}px`,
+          width: `${offsetWidth}px`,
+        });
+      }
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="w-full border-b mb-6">
+    <div className="w-full border-b mb-6 relative">
       <Tabs value={activeTab} className="w-full" onValueChange={onTabChange}>
-        <TabsList className="flex w-full overflow-x-auto gap-2 bg-transparent p-0 border-none">
-          {TABS.map((tab) => (
+        <TabsList className="flex w-full overflow-x-auto gap-2 bg-transparent p-0 border-none relative">
+          {/* Hover Highlight */}
+          <div
+            className="absolute h-[36px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-blue-100/60 dark:bg-blue-900/30 rounded-lg z-0"
+            style={{
+              ...hoverStyle,
+              opacity: hoveredIndex !== null ? 1 : 0,
+              pointerEvents: "none",
+              top: 0,
+            }}
+          />
+          {/* Active Underline */}
+          <div
+            className="absolute bottom-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10"
+            style={{ ...activeStyle }}
+          />
+          {TABS.map((tab, idx) => (
             <TabsTrigger
               key={tab.value}
               value={tab.value}
-              className="rounded-none px-4 py-2 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600"
+              ref={(el) => (tabRefs.current[idx] = el)}
+              className="relative z-10 rounded-lg px-4 py-2 font-medium flex items-center gap-1 transition-colors duration-300 data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-300 data-[state=active]:font-semibold bg-transparent focus-visible:ring-2 focus-visible:ring-blue-400"
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
+              {tab.icon}
               {tab.label}
             </TabsTrigger>
           ))}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground focus:outline-none">
+              <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground focus:outline-none relative z-10">
                 More <ChevronDown className="w-4 h-4" />
               </button>
             </DropdownMenuTrigger>

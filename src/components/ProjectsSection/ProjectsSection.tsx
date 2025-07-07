@@ -9,7 +9,7 @@ import {
 export default function ProjectsSection() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-      <a href="#" className="block">
+      <a href="https://v0-academic-landing-page.vercel.app" className="block">
         <Card className="rounded-md">
           <CardHeader className="flex flex-col items-center">
             <span className="text-4xl">🎓</span>
@@ -18,11 +18,13 @@ export default function ProjectsSection() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              An academic site for students to get help with their studies.
-              Links students to tutors and provides a chatbot for quick
-              questions.
-            </CardDescription>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <CardDescription>
+                An academic site for students to get help with their studies.
+                Links students to tutors and provides a chatbot for quick
+                questions.
+              </CardDescription>
+            </div>
           </CardContent>
         </Card>
       </a>
@@ -35,10 +37,12 @@ export default function ProjectsSection() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              Built with RetellAI & Make.com. Automates appointment scheduling,
-              integrates with Google Calendar and CRM tools.
-            </CardDescription>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <CardDescription>
+                Built with RetellAI & Make.com. Automates appointment
+                scheduling, integrates with Google Calendar and CRM tools.
+              </CardDescription>
+            </div>
           </CardContent>
         </Card>
       </a>
@@ -51,10 +55,13 @@ export default function ProjectsSection() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              Low-code automation pipeline to generate, validate (SEO), approve,
-              and publish content across YouTube, LinkedIn, and blogs.
-            </CardDescription>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <CardDescription>
+                Low-code automation pipeline to generate, validate (SEO),
+                approve, and publish content across YouTube, LinkedIn, and
+                blogs.
+              </CardDescription>
+            </div>
           </CardContent>
         </Card>
       </a>
@@ -67,10 +74,12 @@ export default function ProjectsSection() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              A school Management System for multi schools application providing
-              different modules
-            </CardDescription>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <CardDescription>
+                A school Management System for multi schools application
+                providing different modules
+              </CardDescription>
+            </div>
           </CardContent>
         </Card>
       </a>
@@ -83,10 +92,13 @@ export default function ProjectsSection() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>
-              Customized legacy systems for Marengoni College and Sisto Mazzoldi
-              Hospital with offline-first deployments and remote support.
-            </CardDescription>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <CardDescription>
+                Customized legacy systems for Marengoni College and Sisto
+                Mazzoldi Hospital with offline-first deployments and remote
+                support.
+              </CardDescription>
+            </div>
           </CardContent>
         </Card>
       </a>

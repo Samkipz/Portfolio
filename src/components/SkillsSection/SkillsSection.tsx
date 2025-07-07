@@ -65,15 +65,17 @@ export default function SkillsSection() {
       </TabsList>
       {skills.map((skillGroup) => (
         <TabsContent key={skillGroup.category} value={skillGroup.category}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {skillGroup.items.map((skill) => (
-              <div
-                key={skill}
-                className="flex items-center justify-center rounded-md border border-muted bg-muted/40 py-6 text-lg font-medium"
-              >
-                {skill}
-              </div>
-            ))}
+          <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {skillGroup.items.map((skill) => (
+                <div
+                  key={skill}
+                  className="flex items-center justify-center rounded-md border border-muted bg-muted/40 py-6 text-lg font-medium"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
           </div>
         </TabsContent>
       ))}

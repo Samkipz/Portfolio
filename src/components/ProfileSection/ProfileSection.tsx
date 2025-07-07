@@ -3,8 +3,8 @@ import { Card, CardContent } from "../ui/card";
 export default function ProfileSection() {
   return (
     <>
-      <Card className="rounded-md border bg-muted/40 p-0">
-        <CardContent className="py-3 px-4">
+      <Card className="rounded-md border bg-muted/40 p-0 ">
+        <CardContent className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
           <p>
             Software developer with a strong interest in AI-driven automation
             and scalable web applications. I&apos;ve built solutions ranging

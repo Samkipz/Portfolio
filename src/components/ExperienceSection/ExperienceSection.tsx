@@ -44,18 +44,20 @@ export default function ExperienceSection() {
     <div className="flex flex-col gap-3">
       {experiences.map((exp, index) => (
         <Card key={index} className="rounded-md border bg-muted/40 p-0">
-          <CardContent className="py-3 px-4">
-            <div className="font-semibold">
-              {exp.title}{" "}
-              <span className="text-sm font-normal">
-                | {exp.company} ({exp.period})
-              </span>
+          <CardContent>
+            <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
+              <div className="font-semibold">
+                {exp.title}{" "}
+                <span className="text-sm font-normal">
+                  | {exp.company} ({exp.period})
+                </span>
+              </div>
+              <ul className="list-disc list-inside text-sm mt-1">
+                {exp.description.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             </div>
-            <ul className="list-disc list-inside text-sm mt-1">
-              {exp.description.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
           </CardContent>
         </Card>
       ))}
