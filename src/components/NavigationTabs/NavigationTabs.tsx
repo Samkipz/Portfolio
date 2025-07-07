@@ -132,7 +132,9 @@ export default function NavigationTabs({
             <TabsTrigger
               key={tab.value}
               value={tab.value}
-              ref={(el) => (tabRefs.current[idx] = el)}
+              ref={(el) => {
+                tabRefs.current[idx] = el;
+              }}
               className="relative z-10 rounded-lg px-4 py-2 font-medium flex items-center gap-1 transition-colors duration-300 data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-300 data-[state=active]:font-semibold bg-transparent focus-visible:ring-2 focus-visible:ring-blue-400"
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
