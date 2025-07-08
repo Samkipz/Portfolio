@@ -8,7 +8,14 @@ import {
   Briefcase,
   GraduationCap,
   Mail,
+  Menu,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "../ui/dropdown-menu";
 
 interface NavigationTabsProps {
   activeTab: string;
@@ -106,9 +113,41 @@ export default function NavigationTabs({
   return (
     <div className="w-full border-b mb-6 mt-4 relative">
       <Tabs value={activeTab} className="w-full" onValueChange={onTabChange}>
-        <div className="-mx-2 sm:mx-0">
+        {/* Hamburger for mobile */}
+        <div className="flex sm:hidden items-center justify-between px-2 py-2">
+          <span className="font-semibold text-lg">Menu</span>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                aria-label="Open tab menu"
+                className="p-2 rounded-md hover:bg-muted/60 transition-colors border border-transparent focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-[10rem]">
+              {TABS.map((tab) => (
+                <DropdownMenuItem
+                  key={tab.value}
+                  onClick={() => onTabChange(tab.value)}
+                  className={
+                    "flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors " +
+                    (activeTab === tab.value
+                      ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-700 dark:text-blue-300 font-semibold"
+                      : "hover:bg-muted/80")
+                  }
+                >
+                  {tab.icon}
+                  {tab.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        {/* Tabs for sm+ */}
+        <div className="-mx-2 sm:mx-0 hidden sm:block">
           <TabsList
-            className="flex min-w-[600px] overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent min-h-[44px]"
+            className="flex w-full overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent min-h-[44px]"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Hover Highlight */}
