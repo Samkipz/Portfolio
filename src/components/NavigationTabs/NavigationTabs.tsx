@@ -106,7 +106,7 @@ export default function NavigationTabs({
   return (
     <div className="w-full border-b mb-6 mt-4 relative">
       <Tabs value={activeTab} className="w-full" onValueChange={onTabChange}>
-        <TabsList className="flex w-full overflow-x-auto gap-2 bg-transparent p-0 border-none relative">
+        <TabsList className="flex w-full overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5">
           {/* Hover Highlight */}
           <div
             className="absolute h-[36px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-blue-100/60 dark:bg-blue-900/30 rounded-lg z-0"
