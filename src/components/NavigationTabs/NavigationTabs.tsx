@@ -143,17 +143,6 @@ export default function NavigationTabs({
               {tab.label}
             </TabsTrigger>
           ))}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground focus:outline-none relative z-10">
-                More <ChevronDown className="w-4 h-4" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>Documents</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </TabsList>
       </Tabs>
     </div>
