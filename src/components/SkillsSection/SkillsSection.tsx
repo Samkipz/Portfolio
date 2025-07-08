@@ -25,12 +25,10 @@ export default function SkillsSection() {
       items: [
         { name: "React.js", icon: <Code className="mb-2 h-8 w-8" /> },
         { name: "Next.js", icon: <Code className="mb-2 h-8 w-8" /> },
-        { name: "Vue.js", icon: <Code className="mb-2 h-8 w-8" /> },
+        { name: "TypeScript", icon: <Code className="mb-2 h-8 w-8" /> },
         { name: "Node.js", icon: <Server className="mb-2 h-8 w-8" /> },
         { name: "Django", icon: <Server className="mb-2 h-8 w-8" /> },
         { name: "Flask", icon: <Server className="mb-2 h-8 w-8" /> },
-        { name: "PHP", icon: <Braces className="mb-2 h-8 w-8" /> },
-        { name: "Laravel", icon: <Braces className="mb-2 h-8 w-8" /> },
       ],
     },
     {
@@ -85,10 +83,6 @@ export default function SkillsSection() {
         },
         { name: "User Training", icon: <Palette className="mb-2 h-8 w-8" /> },
         { name: "API Integration", icon: <Webhook className="mb-2 h-8 w-8" /> },
-        {
-          name: "Business Process Automation",
-          icon: <Workflow className="mb-2 h-8 w-8" />,
-        },
       ],
     },
   ];
