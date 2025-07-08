@@ -147,7 +147,7 @@ export default function NavigationTabs({
         {/* Tabs for sm+ */}
         <div className="-mx-2 sm:mx-0 hidden sm:block">
           <TabsList
-            className="flex w-full overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent min-h-[44px]"
+            className="flex w-full overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent min-h-[44px]"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Hover Highlight */}
