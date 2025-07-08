@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center px-2 sm:px-8 py-8">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-5xl mx-auto">
         <ProfileHeader />
         <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
         <NavigationSection tab={activeTab} />

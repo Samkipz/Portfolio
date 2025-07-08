@@ -110,7 +110,7 @@ export default function NavigationTabs({
   }, []);
 
   return (
-    <div className="w-full border-b mb-6 relative">
+    <div className="w-full border-b mb-6 mt-4 relative">
       <Tabs value={activeTab} className="w-full" onValueChange={onTabChange}>
         <TabsList className="flex w-full overflow-x-auto gap-2 bg-transparent p-0 border-none relative">
           {/* Hover Highlight */}
