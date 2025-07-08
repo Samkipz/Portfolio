@@ -7,9 +7,15 @@ export default function Projects() {
     {
       title: "Academic Assistance Platform",
       description:
-        "Academic platform linking students to tutors for help with their studies. Provides real time communication.",
+        "Academic task marketplace with live chat, real-time updates, order tracking, and secure Stripe payments.",
       status: "Completed",
-      technologies: ["Next.js", "Websocket", "Google Auth", "PostgreSQL"],
+      technologies: [
+        "Next.js",
+        "Drizzle ORM",
+        "Pusher",
+        "Google Auth",
+        "PostgreSQL",
+      ],
       link: "https://v0-academic-landing-page.vercel.app/",
       github: "#",
     },
