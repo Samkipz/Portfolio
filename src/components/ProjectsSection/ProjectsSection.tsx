@@ -37,7 +37,7 @@ export default function Projects() {
       link: "https://make.com/",
       github: "#",
       hasDownload: true,
-      downloadLink: "/downloads/voice-assistant-json.zip",
+      downloadLink: "/downloads/GHL.zip",
     },
     {
       title: "AI Content Automation Pipeline",
