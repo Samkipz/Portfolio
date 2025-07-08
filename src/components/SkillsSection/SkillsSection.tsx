@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/tabs";
 import {
@@ -91,6 +92,7 @@ export default function SkillsSection() {
       ],
     },
   ];
+  const [activeTab, setActiveTab] = useState(skills[0].category);
 
   const categoryStyles: Record<
     string,
@@ -124,8 +126,26 @@ export default function SkillsSection() {
       <div className="absolute -bottom-40 right-40 w-80 h-80 bg-cyan-500 opacity-10 rounded-full blur-3xl"></div>
       <div className="relative z-10">
         <div className="mx-auto">
-          <Tabs defaultValue={skills[0].category} className="w-full">
-            <TabsList className="grid w-full grid-cols-5 bg-muted/80 backdrop-blur-sm">
+          {/* Dropdown for small screens */}
+          <div className="block sm:hidden mb-4">
+            <select
+              className="w-full rounded-md border px-3 py-2"
+              value={activeTab}
+              onChange={(e) => setActiveTab(e.target.value)}
+            >
+              {skills.map((skillGroup) => (
+                <option key={skillGroup.category} value={skillGroup.category}>
+                  {skillGroup.category}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
+            <TabsList className="hidden sm:grid w-full grid-cols-5 bg-muted/80 backdrop-blur-sm">
               {skills.map((skillGroup) => (
                 <TabsTrigger
                   key={skillGroup.category}
