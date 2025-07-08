@@ -5,7 +5,7 @@ import { ModeToggle } from "../ThemeProvider";
 
 export default function ProfileHeader() {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-8 w-full border-b pb-8 relative glass shadow-md px-6 py-6 md:sticky md:top-0 md:z-50 backdrop-blur-lg">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-8 w-full border-b pb-8 relative glass shadow-md px-6 py-6 lg:sticky lg:top-0 lg:z-50 backdrop-blur-lg">
       <div className="absolute right-4 top-4 z-10">
         <ModeToggle />
       </div>

@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 export default function Projects() {
   const projects = [
@@ -17,7 +24,9 @@ export default function Projects() {
         "PostgreSQL",
       ],
       link: "https://v0-academic-landing-page.vercel.app/",
-      github: "#",
+      github: "https://github.com/Samkipz/Lumo-academic",
+      hasDownload: false,
+      downloadLink: "",
     },
     {
       title: "Voice Assistant for Appointment Booking",
@@ -25,16 +34,20 @@ export default function Projects() {
         "Intelligent voice assistant linked with GHL for scheduling and booking appointments with the aim of turning potential leads into clients.",
       status: "Completed",
       technologies: ["RetellAI", "Make.com", "GHL"],
-      link: "#",
+      link: "https://make.com/",
       github: "#",
+      hasDownload: true,
+      downloadLink: "/downloads/voice-assistant-json.zip",
     },
     {
       title: "AI Content Automation Pipeline",
       description: "Automated content creation and distribution system",
-      status: "Completed",
+      status: "In Progress",
       technologies: ["Airtable", "OpenAI", "Make.com", "REST APIs"],
-      link: "#",
+      link: "https://make.com/",
       github: "#",
+      hasDownload: true,
+      downloadLink: "/downloads/ai-content-pipeline.zip",
     },
     {
       title: "SACCO Management System",
@@ -43,6 +56,8 @@ export default function Projects() {
       technologies: ["Laravel", "MySQL", "Bootstrap", "jQuery"],
       link: "#",
       github: "#",
+      hasDownload: false,
+      downloadLink: "",
     },
   ];
 
@@ -87,21 +102,44 @@ export default function Projects() {
             </div>
 
             <div className="flex justify-between mt-auto pt-2 border-t border-gray-100 dark:border-gray-800/50">
-              <Button
-                variant="outline"
-                size="sm"
-                className="gap-1 text-sm border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
-                asChild
-              >
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-1 text-sm border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  asChild
                 >
-                  <Github className="h-3.5 w-3.5" />
-                  <span>Code</span>
-                </a>
-              </Button>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-3.5 w-3.5" />
+                    <span>Code</span>
+                  </a>
+                </Button>
+                {/* Dropdown for cards with download */}
+                {project.hasDownload && project.downloadLink && (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+                      >
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-[160px]">
+                      <DropdownMenuItem asChild>
+                        <a href={project.downloadLink} download>
+                          Download ZIP
+                        </a>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </div>
               <Button
                 variant="outline"
                 size="sm"
