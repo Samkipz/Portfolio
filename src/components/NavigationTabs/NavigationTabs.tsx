@@ -1,13 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+
 import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "../ui/dropdown-menu";
-import {
-  ChevronDown,
   User,
   Folder,
   Sparkles,
