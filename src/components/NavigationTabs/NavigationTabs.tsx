@@ -106,38 +106,43 @@ export default function NavigationTabs({
   return (
     <div className="w-full border-b mb-6 mt-4 relative">
       <Tabs value={activeTab} className="w-full" onValueChange={onTabChange}>
-        <TabsList className="flex w-full overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5">
-          {/* Hover Highlight */}
-          <div
-            className="absolute h-[36px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-blue-100/60 dark:bg-blue-900/30 rounded-lg z-0"
-            style={{
-              ...hoverStyle,
-              opacity: hoveredIndex !== null ? 1 : 0,
-              pointerEvents: "none",
-              top: 0,
-            }}
-          />
-          {/* Active Underline */}
-          <div
-            className="absolute bottom-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10"
-            style={{ ...activeStyle }}
-          />
-          {TABS.map((tab, idx) => (
-            <TabsTrigger
-              key={tab.value}
-              value={tab.value}
-              ref={(el) => {
-                tabRefs.current[idx] = el;
+        <div className="-mx-2 sm:mx-0">
+          <TabsList
+            className="flex min-w-[600px] overflow-x-auto whitespace-nowrap gap-2 bg-transparent p-0 border-none relative sm:grid sm:grid-cols-5 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent min-h-[44px]"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {/* Hover Highlight */}
+            <div
+              className="absolute h-[36px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] bg-blue-100/60 dark:bg-blue-900/30 rounded-lg z-0"
+              style={{
+                ...hoverStyle,
+                opacity: hoveredIndex !== null ? 1 : 0,
+                pointerEvents: "none",
+                top: 0,
               }}
-              className="relative z-10 rounded-lg px-4 py-2 font-medium flex items-center gap-1 transition-colors duration-300 data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-300 data-[state=active]:font-semibold bg-transparent focus-visible:ring-2 focus-visible:ring-blue-400"
-              onMouseEnter={() => setHoveredIndex(idx)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {tab.icon}
-              {tab.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+            />
+            {/* Active Underline */}
+            <div
+              className="absolute bottom-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10"
+              style={{ ...activeStyle }}
+            />
+            {TABS.map((tab, idx) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                ref={(el) => {
+                  tabRefs.current[idx] = el;
+                }}
+                className="relative z-10 rounded-lg px-4 py-2 font-medium flex items-center gap-1 transition-colors duration-300 data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-300 data-[state=active]:font-semibold bg-transparent focus-visible:ring-2 focus-visible:ring-blue-400"
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {tab.icon}
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
       </Tabs>
     </div>
   );
