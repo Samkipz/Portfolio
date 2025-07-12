@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
-import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail, Download } from "lucide-react";
 import { ModeToggle } from "../ThemeProvider";
 
 export default function ProfileHeader() {
@@ -21,7 +21,7 @@ export default function ProfileHeader() {
             </h1>
             <Badge
               variant="secondary"
-              className="accent-gradient px-3 py-1 text-base font-semibold shadow-md"
+              className="accent-gradient px-3 py-1 text-base font-semibold shadow-md border-none"
             >
               Software Engineer
             </Badge>
@@ -37,7 +37,7 @@ export default function ProfileHeader() {
                 href="mailto:samkip@gmail.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-semibold"
               >
-                samkip@gmail.com <ExternalLink className="h-4 w-4" />
+                ndiemasam@gmail.com <ExternalLink className="h-4 w-4" />
               </a>
             </span>
           </div>
@@ -64,6 +64,16 @@ export default function ProfileHeader() {
         </div>
       </div>
       <div className="flex-1"></div>
+      {/* Download CV button at bottom right */}
+      <a href="/downloads/SamuelNdiemaCV.pdf" download className="absolute bottom-4 right-6 z-10">
+        <button
+          type="button"
+          className="h-7 gap-1 text-sm ml-auto border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 border rounded-md px-3 flex items-center shadow-sm transition-colors"
+        >
+          <Download className="h-3.5 w-3.5 mr-1" />
+          <span>Download CV</span>
+        </button>
+      </a>
     </div>
   );
 }

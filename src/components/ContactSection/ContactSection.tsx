@@ -1,66 +1,51 @@
-// import { Mail, Phone, Github } from "lucide-react";
-
-// export default function ContactSection() {
-//   const contactInfo = [
-//     {
-//       icon: <Mail className="h-5 w-5" />,
-//       label: "Email",
-//       value: "ndiemasam@gmail.com",
-//       link: "mailto:ndiemasam@gmail.com",
-//     },
-//     {
-//       icon: <Phone className="h-5 w-5" />,
-//       label: "Phone",
-//       value: "+254707522004 / +254110300268",
-//       link: "tel:+254707522004",
-//     },
-//     {
-//       icon: <Github className="h-5 w-5" />,
-//       label: "GitHub",
-//       value: "Samkipz",
-//       link: "https://github.com/Samkipz",
-//     },
-//   ];
-
-//   return (
-//     <div className="flex flex-col gap-3">
-//       <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-6 shadow-sm">
-//         <div className="mb-4 text-lg font-medium">
-//           Let&#39;s build something amazing.
-//         </div>
-//         <div className="grid gap-3">
-//           {contactInfo.map((info, index) => (
-//             <div key={index} className="flex items-center gap-4">
-//               <div className="text-muted-foreground">{info.icon}</div>
-//               <div>
-//                 <span className="text-sm font-medium">{info.label}:</span>{" "}
-//                 {info.link ? (
-//                   <a
-//                     href={info.link}
-//                     className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
-//                   >
-//                     {info.value}
-//                   </a>
-//                 ) : (
-//                   <span className="text-sm text-muted-foreground">
-//                     {info.value}
-//                   </span>
-//                 )}
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [error, setError] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+        const data = await res.json();
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setError("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <div className="animate-in fade-in-50 duration-300">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -79,7 +64,7 @@ export default function Contact() {
                   Location
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Kitale, Kenya
+                  Nairobi, Kenya
                 </p>
               </div>
             </div>
@@ -111,7 +96,7 @@ export default function Contact() {
                   Phone
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  +254 XXX XXX XXX
+                  +254 707522004
                 </p>
               </div>
             </div>
@@ -123,7 +108,7 @@ export default function Contact() {
             </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Available for freelance projects, consulting, and full-time
-              opportunities. Typically responds within 24 hours.
+              opportunities. <br />
             </p>
           </div>
         </div>
@@ -133,7 +118,7 @@ export default function Contact() {
             Send a Message
           </h3>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label
                 htmlFor="name"
@@ -145,6 +130,9 @@ export default function Contact() {
                 id="name"
                 placeholder="Your name"
                 className="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                value={form.name}
+                onChange={handleChange}
+                required
               />
             </div>
 
@@ -160,6 +148,9 @@ export default function Contact() {
                 type="email"
                 placeholder="Your email"
                 className="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                value={form.email}
+                onChange={handleChange}
+                required
               />
             </div>
 
@@ -174,6 +165,9 @@ export default function Contact() {
                 id="subject"
                 placeholder="Message subject"
                 className="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                value={form.subject}
+                onChange={handleChange}
+                required
               />
             </div>
 
@@ -189,14 +183,34 @@ export default function Contact() {
                 placeholder="Your message"
                 rows={4}
                 className="border-gray-300 dark:border-gray-700 focus:ring-blue-500 focus:border-blue-500"
+                value={form.message}
+                onChange={handleChange}
+                required
               />
             </div>
+
+            {status === "sending" && (
+              <div className="text-blue-600 dark:text-blue-400 text-sm">
+                Sending...
+              </div>
+            )}
+            {status === "success" && (
+              <div className="text-green-600 dark:text-green-400 text-sm">
+                Message sent successfully!
+              </div>
+            )}
+            {status === "error" && (
+              <div className="text-red-600 dark:text-red-400 text-sm">
+                {error || "Failed to send message."}
+              </div>
+            )}
 
             <Button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              disabled={status === "sending"}
             >
-              Send Message
+              {status === "sending" ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>

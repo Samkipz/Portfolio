@@ -82,16 +82,16 @@ export default function Experience() {
       company: "ICT Authority – Presidential Digital Talent Program",
       period: "2023–2024",
       description:
-        "Participated in the Presidential Digital Talent Program, working on various digital transformation projects for government agencies.",
-      skills: ["Web Development", "Digital Transformation", "Government Tech"],
+        "Managed IT assets and support operations across 4+ remote sites. Ensured secure network uptime and resolved support tickets via Citrix.",
+      skills: ["Citrix Director", "System Development", "Mentorship"],
     },
     {
       title: "Software Developer",
       company: "Research Solutions Network",
       period: "2023",
       description:
-        "Developed and maintained web applications for research and data collection. Implemented data visualization dashboards and reporting tools.",
-      skills: ["Django", "React", "Data Visualization", "PostgreSQL"],
+        "Customized & deployed management systems for hospitals and colleges. Provided tech support, user training, and legacy code modernization.",
+      skills: ["PHP", "Laravel", "PostgreSQL"],
     },
     {
       title: "Frontend Intern",
@@ -99,7 +99,7 @@ export default function Experience() {
       period: "2022–2023",
       description:
         "Assisted in the development and maintenance of the company's web applications. Implemented responsive designs and improved user experience.",
-      skills: ["HTML/CSS", "JavaScript", "React", "UI/UX"],
+      skills: ["HTML/CSS", "JavaScript", "React", "UI/UX", "Apache", "Nginx"],
     },
   ];
 

@@ -46,9 +46,9 @@ export default function Education() {
     {
       title: "BSc Computer Science",
       institution: "University of Kabianga",
-      period: "2019-2023",
+      period: "2018-2022",
       description:
-        "Graduated with honors. Focused on software engineering, artificial intelligence, and database systems.",
+        "Graduated with honors. Focused on software engineering, and database systems.",
     },
   ]
 
@@ -60,14 +60,14 @@ export default function Education() {
       description: "Foundational understanding of AWS Cloud services, security, architecture, and pricing.",
     },
     {
-      title: "LangChain for LLM Application Development",
-      issuer: "DeepLearning.AI",
+      title: "Python Essentials 1 & 2",
+      issuer: "Cisco Networking Academy",
       date: "2023",
-      description: "Building applications with large language models using the LangChain framework.",
+      description: "Python programming fundamentals, data structures, and algorithms.",
     },
     {
-      title: "UX Design",
-      issuer: "Google",
+      title: "UX Design & Agile Project Management",
+      issuer: "Google/Coursera",
       date: "2023",
       description: "Comprehensive training in user experience design principles and practices.",
     },
@@ -96,22 +96,7 @@ export default function Education() {
                       className="bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800"
                     >
                       {edu.period}
-                    </Badge>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-8 w-8 text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-[160px]">
-                        <DropdownMenuItem>Edit Education</DropdownMenuItem>
-                        <DropdownMenuItem className="text-red-600 dark:text-red-400">Delete Education</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    </Badge>                 
                   </div>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{edu.description}</p>
